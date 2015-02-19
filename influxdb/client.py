@@ -14,8 +14,6 @@ try:
 except NameError:
     xrange = range
 
-session = requests.Session()
-
 
 class InfluxDBClientError(Exception):
     "Raised when an error occurs in the request"
@@ -143,6 +141,8 @@ class InfluxDBClient(object):
         """
         Make a http request to API
         """
+        session = requests.Session()
+
         url = "{0}/{1}".format(self._baseurl, url)
 
         if params is None:
