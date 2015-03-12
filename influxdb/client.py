@@ -141,7 +141,6 @@ class InfluxDBClient(object):
         """
         Make a http request to API
         """
-        session = requests.Session()
 
         url = "{0}/{1}".format(self._baseurl, url)
 
@@ -158,7 +157,7 @@ class InfluxDBClient(object):
         if data is not None and not isinstance(data, str):
             data = json.dumps(data)
 
-        response = session.request(
+        response = requests.request(
             method=method,
             url=url,
             params=params,
